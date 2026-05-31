@@ -1,5 +1,7 @@
 import { Link } from "react-router-dom";
 import OdometerCounter from "@/shared/elements/OdometerCounter";
+import { useContentField } from "@/hooks/useContentField";
+const C = 'home1.s2'
 
 const ARROW_SVG = (
     <svg width="11" height="11" viewBox="0 0 11 11" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -16,6 +18,15 @@ const AVATARS = [
 ] as const;
 
 export default function Section2() {
+    const badge      = useContentField(`${C}.badge`,      'Nosotros')
+    const mainText   = useContentField(`${C}.mainText`,   'Creamos experiencias digitales que inspiran y conectan, uniendo diseño estratégico, movimiento fluido y artesanía digital de élite.')
+    const sideText   = useContentField(`${C}.sideText`,   'Construimos marcas audaces y resilientes diseñadas para dejar una huella duradera en el mundo.')
+    const card1Title = useContentField(`${C}.card1Title`, 'Experiencia Creativa')
+    const card1Desc  = useContentField(`${C}.card1Desc`,  'Con más de una década de experiencia en diseño, creamos soluciones a medida que conectan con audiencias, construyen relaciones significativas y elevan marcas con creatividad e intención.')
+    const card2Title = useContentField(`${C}.card2Title`, 'Experiencia e Innovación')
+    const card2Desc  = useContentField(`${C}.card2Desc`,  'Respaldados por una década de experiencia creativa, construimos experiencias visuales que unen estrategia, diseño y tecnología para hacer crecer marcas, inspirar audiencias y crear impacto real.')
+    const img1       = useContentField(`${C}.img1`,       '/assets/imgs/pages/img-3.webp')
+    const img2       = useContentField(`${C}.img2`,       '/assets/imgs/pages/img-4.webp')
     return (
         <section className="at-about-area pt-100">
             <div className="container">
@@ -24,14 +35,14 @@ export default function Section2() {
                         <div className="at-about-title-wrap mb-30">
                             <span className="at-btn common-black bg-transparent mb-10 rounded-0 p-0">
                                 <span className="text-uppercase">
-                                    <span className="text-1">Nosotros</span>
-                                    <span className="text-2">Nosotros</span>
+                                    <span className="text-1">{badge}</span>
+                                    <span className="text-2">{badge}</span>
                                 </span>
                                 <i>{ARROW_SVG}{ARROW_SVG}</i>
                             </span>
                             <h3 className="at-section-title mb-0">
                                 <span className="">
-                                    Creamos experiencias digitales que inspiran y conectan, uniendo diseño estratégico, movimiento fluido y artesanía digital de élite.
+                                    {mainText}
                                 </span>
                                 <span className="at-about-btn-transform ml-20">
                                     <Link className="at-btn" to="/contact-1">
@@ -55,8 +66,7 @@ export default function Section2() {
                                         <path fillRule="evenodd" clipRule="evenodd" d="M40 20V0H20H0V20V40H20L40 20ZM40 20H20V40L0 20L20 0L40 20Z" fill="#F0460E" />
                                     </svg>
                                     <br className="d-block" />
-                                    Construimos marcas <span className="fw-700">audaces</span> y resilientes diseñadas para dejar una huella duradera <br />
-                                    en el mundo.
+                                    {sideText}
                                 </span>
                             </div>
                             <div className="d-flex align-items-center">
@@ -106,27 +116,23 @@ export default function Section2() {
                                                         data-parallax
                                                         data-parallax-speed="0.45"
                                                         data-parallax-range="100"
-                                                        src="/assets/imgs/pages/img-3.webp"
+                                                        src={img1}
                                                         alt="orisa"
                                                         width={600}
                                                         height={450} loading="lazy" />
                                                 </div>
                                             </div>
                                             <div className="at-about-content">
-                                                <h3 className="at-about-title mb-10 at-char-animation">Experiencia Creativa</h3>
-                                                <p className="at-about-dec at_fade_anim">
-                                                    Con más de una década de experiencia en diseño, creamos soluciones a medida que conectan con audiencias, construyen relaciones significativas y elevan marcas con creatividad e intención.
-                                                </p>
+                                                <h3 className="at-about-title mb-10 at-char-animation">{card1Title}</h3>
+                                                <p className="at-about-dec at_fade_anim">{card1Desc}</p>
                                             </div>
                                         </div>
                                     </div>
                                     <div className="col-lg-6 col-md-6">
                                         <div className="at-about-item mb-40 d-flex flex-column gap-4">
                                             <div className="at-about-content order-2 order-md-1">
-                                                <h3 className="at-about-title mb-10 at-char-animation">Experiencia e Innovación</h3>
-                                                <p className="at-about-dec at_fade_anim">
-                                                    Respaldados por una década de experiencia creativa, construimos experiencias visuales que unen estrategia, diseño y tecnología para hacer crecer marcas, inspirar audiencias y crear impacto real.
-                                                </p>
+                                                <h3 className="at-about-title mb-10 at-char-animation">{card2Title}</h3>
+                                                <p className="at-about-dec at_fade_anim">{card2Desc}</p>
                                             </div>
                                             <div className="anim-zoomin-wrap order-1 order-md-2">
                                                 <div className="at-about-thumb fix anim-zoomin">
@@ -135,7 +141,7 @@ export default function Section2() {
                                                         data-delay=".4"
                                                         data-fade-from="bottom"
                                                         data-ease="bounce"
-                                                        src="/assets/imgs/pages/img-4.webp"
+                                                        src={img2}
                                                         alt="orisa"
                                                         width={500}
                                                         height={450} loading="lazy" />

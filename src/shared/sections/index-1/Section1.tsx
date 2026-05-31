@@ -1,4 +1,6 @@
 import { Link } from "react-router-dom";
+import { useContentField } from "@/hooks/useContentField";
+const C = 'home1.s1'
 function ArrowIcon() {
     return (
         <>
@@ -12,14 +14,14 @@ function ArrowIcon() {
     );
 }
 
-const heroServices = [
-    "Diseño Web",
-    "Motion Graphics",
-    "Branding & Identidad",
-    "UI/UX Design",
-];
-
 export default function Section1() {
+    const subtitle    = useContentField(`${C}.subtitle`,    'Agencia Creativa Digital')
+    const title       = useContentField(`${C}.title`,       'Diseñamos con imaginación, impulsados por propósito.')
+    const serviceDesc = useContentField(`${C}.serviceDesc`, 'Colaboramos con marcas para crear diseño digital que genera conversiones y captura atención.')
+    const btn1        = useContentField(`${C}.btn1`,        'Ver Portafolio')
+    const btn2        = useContentField(`${C}.btn2`,        'Cotización gratis')
+    const heroImg     = useContentField(`${C}.heroImg`,     '/assets/imgs/pages/img-1.webp')
+    const heroServices = ["Diseño Web", "Motion Graphics", "Branding & Identidad", "UI/UX Design"]
     return (
         <>
             {/* at-hero-area */}
@@ -47,7 +49,7 @@ export default function Section1() {
                         height={1043}
                         className="layer"
                         data-depth=".1"
-                        src="/assets/imgs/pages/img-1.webp"
+                        src={heroImg}
                         alt="orisa"
                         style={{ width: "auto", height: "auto", alignSelf: "flex-end" }} loading="lazy" />
                 </div>
@@ -126,7 +128,7 @@ export default function Section1() {
                                     </li>
                                     <li className="at_fade_anim">
                                         <span className="fz-font-md fw-500 text-white ">
-                                            Colaboramos con marcas para crear diseño digital que genera conversiones y captura atención.
+                                            {serviceDesc}
                                         </span>
                                     </li>
                                 </ul>
@@ -135,7 +137,7 @@ export default function Section1() {
                         <div className="col-xxl-5 offset-xxl-2 col-xl-6 col-12 ms-auto order-xl-1 order-md-2">
                             <div className="at-hero-content mb-30">
                                 <span className="at-hero-subtitle text-white mb-10 d-inline-block at_fade_anim">
-                                    Agencia Creativa Digital
+                                    {subtitle}
                                 </span>
                                 <h2 className="at-hero-title text-white">
                                     <span
@@ -143,7 +145,7 @@ export default function Section1() {
                                         data-delay="0.5"
                                         data-fade-from="top"
                                     >
-                                        Diseñamos con <br /> imaginación, <br /> impulsados por propósito.
+                                        {title}
                                     </span>
                                 </h2>
                                 <div
@@ -156,8 +158,8 @@ export default function Section1() {
                                         to="/portfolio-1"
                                     >
                                         <span>
-                                            <span className="text-1">Ver Portafolio</span>
-                                            <span className="text-2">Ver Portafolio</span>
+                                            <span className="text-1">{btn1}</span>
+                                            <span className="text-2">{btn1}</span>
                                         </span>
                                         <i>
                                             <ArrowIcon />
@@ -168,8 +170,8 @@ export default function Section1() {
                                         to="/contact-1"
                                     >
                                         <span>
-                                            <span className="text-1">Cotización gratis</span>
-                                            <span className="text-2">Cotización gratis</span>
+                                            <span className="text-1">{btn2}</span>
+                                            <span className="text-2">{btn2}</span>
                                         </span>
                                         <i>
                                             <ArrowIcon />
