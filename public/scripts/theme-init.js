@@ -4,8 +4,7 @@
         if (theme === "dark" || theme === "light") {
             document.documentElement.setAttribute("data-bs-theme", theme);
         } else {
-            var prefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
-            document.documentElement.setAttribute("data-bs-theme", prefersDark ? "dark" : "light");
+            document.documentElement.setAttribute("data-bs-theme", "light");
         }
     } catch (e) {
         document.documentElement.setAttribute("data-bs-theme", "light");
