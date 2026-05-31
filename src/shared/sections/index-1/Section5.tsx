@@ -1,6 +1,8 @@
 import { Link } from "react-router-dom";
 import RevealText from "@/shared/effects/RevealText";
 import PortfolioCard1 from "@/shared/cards/PortfolioCard1";
+import { useContentField } from "@/hooks/useContentField";
+const C = 'home1.s5'
 
 const CUBE_SVG = (
     <svg className="fill-primary mb-10" xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 48 48" fill="none">
@@ -17,7 +19,19 @@ const ARROW_CIRCLE_SVG = (
     </svg>
 );
 
-const PORTFOLIO_ITEMS = [
+const PORTFOLIO_IMGS = [
+    { img: "/assets/imgs/pages/img-11.webp", link: "/portfolio-details-1" },
+    { img: "/assets/imgs/pages/img-12.webp", link: "/portfolio-details-1" },
+    { img: "/assets/imgs/pages/img-13.webp", link: "/portfolio-details-1" },
+    { img: "/assets/imgs/pages/img-14.webp", link: "/portfolio-details-1" },
+]
+const PORTFOLIO_TAGS = [
+    [{ label: "Branding", href: "#" }, { label: "Diseño Web", href: "#" }, { label: "Desarrollo Web", href: "#" }],
+    [{ label: "Branding", href: "#" }, { label: "Diseño Web", href: "#" }, { label: "UI/UX", href: "#" }],
+    [{ label: "Branding", href: "#" }, { label: "Motion", href: "#" }, { label: "Identidad Visual", href: "#" }],
+    [{ label: "Estrategia de marca", href: "#" }, { label: "Identidad visual", href: "#" }, { label: "Sistema de diseño", href: "#" }],
+]
+const PORTFOLIO_ITEMS_STATIC = [
     {
         classList: "mb-55",
         link: "/portfolio-details-1",
@@ -70,6 +84,24 @@ const PORTFOLIO_ITEMS = [
 ];
 
 export default function Section5({ classList = "" }: { classList?: string }) {
+    const title   = useContentField(`${C}.title`,   'Trabajos seleccionados de los que estamos orgullosos')
+    const desc    = useContentField(`${C}.desc`,    'Una selección cuidada de proyectos donde estrategia, creatividad y oficio se unen para construir experiencias de marca significativas y duraderas.')
+    const cta     = useContentField(`${C}.cta`,     'Ver proyectos recientes')
+    const p1title = useContentField(`${C}.p1title`, 'Noirform')
+    const p1desc  = useContentField(`${C}.p1desc`,  'Dirección de arte & identidad visual de marca')
+    const p2title = useContentField(`${C}.p2title`, 'Nebula')
+    const p2desc  = useContentField(`${C}.p2desc`,  'UI/UX & diseño de producto para plataformas digitales')
+    const p3title = useContentField(`${C}.p3title`, 'Voidline')
+    const p3desc  = useContentField(`${C}.p3desc`,  'Animación 3D & branding con motion graphics')
+    const p4title = useContentField(`${C}.p4title`, 'Lumen')
+    const p4desc  = useContentField(`${C}.p4desc`,  'Sistema de branding para startups modernas')
+    const PORTFOLIO_ITEMS = [
+        { ...PORTFOLIO_IMGS[0], classList: "mb-55", title: p1title, description: p1desc, tags: PORTFOLIO_TAGS[0] },
+        { ...PORTFOLIO_IMGS[1], classList: "mb-55", title: p2title, description: p2desc, tags: PORTFOLIO_TAGS[1] },
+        { ...PORTFOLIO_IMGS[2], classList: "mb-55", title: p3title, description: p3desc, tags: PORTFOLIO_TAGS[2] },
+        { ...PORTFOLIO_IMGS[3], classList: "mb-55", title: p4title, description: p4desc, tags: PORTFOLIO_TAGS[3] },
+    ]
+    void PORTFOLIO_ITEMS_STATIC
     return (
         <div className={`mg-portfolio-area pt-145 pb-65 ${classList}`.trim()}>
             <div className="container">
@@ -78,22 +110,18 @@ export default function Section5({ classList = "" }: { classList?: string }) {
                         <div className="mg-portfolio-title-wrap mg-portfolio-pin mb-30">
                             {CUBE_SVG}
                             <h2 className="alt-section-title lh-1 mb-30 reveal-text">
-                                <RevealText>
-                                    Trabajos seleccionados de los que estamos orgullosos
-                                </RevealText>
+                                <RevealText>{title}</RevealText>
                             </h2>
                             <div className="at_fade_anim" data-delay=".3">
                                 <p className="mg-portfolio-dec mb-50">
-                                    Una selección cuidada de proyectos donde estrategia, creatividad y oficio se unen para construir experiencias de marca significativas y duraderas.
+                                    {desc}
                                 </p>
                             </div>
                             <div className="at-btn-group at_fade_anim" data-delay=".4" data-fade-from="bottom" data-ease="bounce">
                                 <Link className="at-btn-circle" to="/portfolio-1">
                                     {ARROW_CIRCLE_SVG}
                                 </Link>
-                                <Link className="at-btn z-index-1" to="/portfolio-1">
-                                    Ver proyectos recientes
-                                </Link>
+                                <Link className="at-btn z-index-1" to="/portfolio-1">{cta}</Link>
                                 <Link className="at-btn-circle" to="/portfolio-1">
                                     {ARROW_CIRCLE_SVG}
                                 </Link>

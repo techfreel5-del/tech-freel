@@ -1,5 +1,8 @@
 import { useEffect, useRef } from "react";
 import { Link } from "react-router-dom";
+import { useContentField } from "@/hooks/useContentField";
+const C = 'home1.s12'
+
 const ARROW_SVG = (
     <svg width="11" height="11" viewBox="0 0 11 11" fill="none" xmlns="http://www.w3.org/2000/svg">
         <path
@@ -10,6 +13,11 @@ const ARROW_SVG = (
 );
 
 export default function Section12() {
+    const title   = useContentField(`${C}.title`,   'Creemos algo significativo juntos')
+    const btn     = useContentField(`${C}.btn`,     'Agenda una llamada')
+    const hours   = useContentField(`${C}.hours`,   'De 9:00 a 18:00 CST')
+    const tagline = useContentField(`${C}.tagline`, 'Estudio creativo que construye experiencias digitales audaces centradas en el usuario. En Tech Freel, combinamos estrategia, diseño e innovación para ayudar a las marcas a destacar y crecer.')
+
     const sectionRef = useRef<HTMLDivElement>(null);
     const scaleUpRef = useRef<HTMLDivElement>(null);
 
@@ -89,7 +97,7 @@ export default function Section12() {
                     <div className="row pt-250 align-items-end">
                         <div className="col-lg-5 col-md-6">
                             <h2 className="common-white">
-                                Creemos algo <br /> significativo juntos
+                                {title}
                             </h2>
                             <div className="d-flex gap-4 align-items-center pt-30">
                                 <Link
@@ -97,21 +105,20 @@ export default function Section12() {
                                     to="/contact"
                                 >
                                     <span>
-                                        <span className="text-1">Agenda una llamada</span>
-                                        <span className="text-2">Agenda una llamada</span>
+                                        <span className="text-1">{btn}</span>
+                                        <span className="text-2">{btn}</span>
                                     </span>
                                     <i>
                                         {ARROW_SVG}
                                         {ARROW_SVG}
                                     </i>
                                 </Link>
-                                <span className="common-white fz-font-sm">[ De 9:00 a 18:00 CST ]</span>
+                                <span className="common-white fz-font-sm">[ {hours} ]</span>
                             </div>
                         </div>
                         <div className="col-lg-4 col-md-6 ms-auto text-end">
                             <span className="common-white fz-font-lg">
-                                [ Estudio creativo que construye experiencias digitales audaces centradas en el usuario.
-                                En Tech Freel, combinamos estrategia, diseño e innovación para ayudar a las marcas a destacar y crecer. ]
+                                [ {tagline} ]
                             </span>
                         </div>
                     </div>

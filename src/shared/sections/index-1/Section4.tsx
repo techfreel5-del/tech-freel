@@ -1,5 +1,7 @@
 import { Link } from "react-router-dom";
 import OdometerCounter from "@/shared/elements/OdometerCounter";
+import { useContentField } from "@/hooks/useContentField";
+const C = 'home1.s4'
 
 const ARROW_SVG = (
     <svg width="11" height="11" viewBox="0 0 11 11" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -7,7 +9,7 @@ const ARROW_SVG = (
     </svg>
 );
 
-const SERVICE_IMAGES = [
+const SERVICE_IMAGES_DEFAULT = [
     "/assets/imgs/pages/img-5.webp",
     "/assets/imgs/pages/img-6.webp",
     "/assets/imgs/pages/img-7.webp",
@@ -17,15 +19,32 @@ const SERVICE_IMAGES = [
 ];
 
 const SERVICES = [
-    { num: "01", title: "Diseño Web", text: "Creamos sitios web de alto rendimiento optimizados para conversión, velocidad y experiencia de usuario.", thumb: "/assets/imgs/pages/img-5-sm.webp" },
-    { num: "02", title: "Branding & Identidad", text: "Construimos identidades de marca sólidas que conectan emocionalmente con tu audiencia objetivo.", thumb: "/assets/imgs/pages/img-6-sm.webp" },
-    { num: "03", title: "UI/UX Design", text: "Diseñamos interfaces intuitivas y experiencias digitales que deleitan a los usuarios y aumentan la retención.", thumb: "/assets/imgs/pages/img-7-sm.webp" },
-    { num: "04", title: "Motion Graphics", text: "Animaciones y efectos visuales que dan vida a tu marca y capturan la atención en cualquier plataforma.", thumb: "/assets/imgs/pages/img-8-sm.webp" },
-    { num: "05", title: "Recursos Digitales", text: "Plantillas, kits de UI, iconos y assets premium listos para usar en tus proyectos creativos.", thumb: "/assets/imgs/pages/img-9-sm.webp" },
-    { num: "06", title: "Membresía Pro", text: "Accede a tutoriales exclusivos, recursos ilimitados y soporte prioritario con nuestro plan premium.", thumb: "/assets/imgs/pages/img-10-sm.webp" },
-];
-
 export default function Section4() {
+    const badge   = useContentField(`${C}.badge`,   'NUESTROS SERVICIOS')
+    const since   = useContentField(`${C}.since`,   'Desde 2024')
+    const stat    = useContentField(`${C}.stat`,    'Proyectos completados')
+    const ctaBtn  = useContentField(`${C}.ctaBtn`,  'Solicitar cotización')
+    const s1title = useContentField(`${C}.s1title`, 'Diseño Web')
+    const s1desc  = useContentField(`${C}.s1desc`,  'Creamos sitios web de alto rendimiento optimizados para conversión, velocidad y experiencia de usuario.')
+    const s2title = useContentField(`${C}.s2title`, 'Branding & Identidad')
+    const s2desc  = useContentField(`${C}.s2desc`,  'Construimos identidades de marca sólidas que conectan emocionalmente con tu audiencia objetivo.')
+    const s3title = useContentField(`${C}.s3title`, 'UI/UX Design')
+    const s3desc  = useContentField(`${C}.s3desc`,  'Diseñamos interfaces intuitivas y experiencias digitales que deleitan a los usuarios y aumentan la retención.')
+    const s4title = useContentField(`${C}.s4title`, 'Motion Graphics')
+    const s4desc  = useContentField(`${C}.s4desc`,  'Animaciones y efectos visuales que dan vida a tu marca y capturan la atención en cualquier plataforma.')
+    const s5title = useContentField(`${C}.s5title`, 'Recursos Digitales')
+    const s5desc  = useContentField(`${C}.s5desc`,  'Plantillas, kits de UI, iconos y assets premium listos para usar en tus proyectos creativos.')
+    const s6title = useContentField(`${C}.s6title`, 'Membresía Pro')
+    const s6desc  = useContentField(`${C}.s6desc`,  'Accede a tutoriales exclusivos, recursos ilimitados y soporte prioritario con nuestro plan premium.')
+    const SERVICE_IMAGES = SERVICE_IMAGES_DEFAULT
+    const SERVICES = [
+        { num: "01", title: s1title, text: s1desc, thumb: "/assets/imgs/pages/img-5-sm.webp" },
+        { num: "02", title: s2title, text: s2desc, thumb: "/assets/imgs/pages/img-6-sm.webp" },
+        { num: "03", title: s3title, text: s3desc, thumb: "/assets/imgs/pages/img-7-sm.webp" },
+        { num: "04", title: s4title, text: s4desc, thumb: "/assets/imgs/pages/img-8-sm.webp" },
+        { num: "05", title: s5title, text: s5desc, thumb: "/assets/imgs/pages/img-9-sm.webp" },
+        { num: "06", title: s6title, text: s6desc, thumb: "/assets/imgs/pages/img-10-sm.webp" },
+    ]
     return (
         <div className="at-service-area at-panel-pin-area pt-120">
             <div className="container">
@@ -34,15 +53,15 @@ export default function Section4() {
                         <div className="at-service-subtitle-wrap at-about-border d-flex justify-content-between gap-3 mb-50">
                             <span className="at-btn common-black text-uppercase bg-transparent mb-10 rounded-0 p-0">
                                 <span className="text-uppercase">
-                                    <span className="text-1">NUESTROS SERVICIOS</span>
-                                    <span className="text-2">NUESTROS SERVICIOS</span>
+                                    <span className="text-1">{badge}</span>
+                                    <span className="text-2">{badge}</span>
                                 </span>
                                 <i>
                                     {ARROW_SVG}
                                     {ARROW_SVG}
                                 </i>
                             </span>
-                            <span className="fs-font-md fw-500 text-decoration-underline">Desde 2024</span>
+                            <span className="fs-font-md fw-500 text-decoration-underline">{since}</span>
                         </div>
                     </div>
                     <div className="col-xxl-4 col-lg-4 col-xl-4 mb-40">
@@ -63,7 +82,7 @@ export default function Section4() {
                                 <h5 className="fw-600 mb-0 mt-10">
                                     <OdometerCounter count={38} suffix="+" />
                                 </h5>
-                                <span className="fz-font-lg neutral-500 fw-500">Proyectos completados</span>
+                                <span className="fz-font-lg neutral-500 fw-500">{stat}</span>
                             </div>
                         </div>
                     </div>
@@ -90,8 +109,8 @@ export default function Section4() {
                             <div className="at-service-btn pt-30">
                                 <Link className="at-btn" to="/contact-1">
                                     <span>
-                                        <span className="text-1">Solicitar cotización</span>
-                                        <span className="text-2">Solicitar cotización</span>
+                                        <span className="text-1">{ctaBtn}</span>
+                                        <span className="text-2">{ctaBtn}</span>
                                     </span>
                                     <i>
                                         {ARROW_SVG}

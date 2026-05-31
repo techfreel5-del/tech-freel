@@ -2,7 +2,9 @@ import RevealText from "@/shared/effects/RevealText";
 import SwiperDynamic from "@/shared/components/SwiperDynamic";
 import TestimonialCard1 from "@/shared/cards/TestimonialCard1";
 import { Link } from "react-router-dom";
-const TESTIMONIAL_SOURCES = [
+import { useContentField } from "@/hooks/useContentField";
+const C = 'home1.s6'
+const TESTIMONIAL_SOURCES_DEFAULT = [
     {
         starColor: "#FFB618",
         img: "/assets/imgs/template/avatar/avatar-6.webp",
@@ -41,7 +43,7 @@ const TESTIMONIAL_SOURCES = [
     },
 ];
 
-const TESTIMONIALS = [...TESTIMONIAL_SOURCES, ...TESTIMONIAL_SOURCES];
+const TESTIMONIALS_META = TESTIMONIAL_SOURCES_DEFAULT.map(t => ({ img: t.img, logo: t.logo, logoWidth: t.logoWidth, logoHeight: t.logoHeight, starColor: t.starColor, company: t.company }))
 
 const LOGO_SVG = (
     <svg className="fill-primary mb-20" xmlns="http://www.w3.org/2000/svg" width="40" height="42" viewBox="0 0 40 42" fill="none">
@@ -69,6 +71,25 @@ const ARROW_NEXT_SVG = (
 );
 
 export default function Section6() {
+    const title    = useContentField(`${C}.title`,    'Lo que dicen nuestros clientes')
+    const subtitle = useContentField(`${C}.subtitle`, 'Experiencias reales de clientes que hablan por sí solas.')
+    const t1name   = useContentField(`${C}.t1name`,   'Amelia Wright')
+    const t1pos    = useContentField(`${C}.t1pos`,    'Directora de Marketing')
+    const t1text   = useContentField(`${C}.t1text`,   'No solo entregaron un diseño, sino una experiencia de marca completa. Estratégicos, creativos e increíblemente detallistas.')
+    const t2name   = useContentField(`${C}.t2name`,   'Lucas Moreno')
+    const t2pos    = useContentField(`${C}.t2pos`,    'Product Manager')
+    const t2text   = useContentField(`${C}.t2text`,   'La colaboración fue perfecta de principio a fin. Sus decisiones de UX mejoraron significativamente el engagement de nuestro producto.')
+    const t3name   = useContentField(`${C}.t3name`,   'Hannah Lee')
+    const t3pos    = useContentField(`${C}.t3pos`,    'Directora Creativa')
+    const t3text   = useContentField(`${C}.t3text`,   'Una combinación excepcional de expertise técnico y visión artística. El resultado final se sintió premium y con propósito.')
+    const TESTIMONIALS = [
+        { ...TESTIMONIALS_META[0], name: t1name, position: t1pos, comment: t1text },
+        { ...TESTIMONIALS_META[1], name: t2name, position: t2pos, comment: t2text },
+        { ...TESTIMONIALS_META[2], name: t3name, position: t3pos, comment: t3text },
+        { ...TESTIMONIALS_META[0], name: t1name, position: t1pos, comment: t1text },
+        { ...TESTIMONIALS_META[1], name: t2name, position: t2pos, comment: t2text },
+        { ...TESTIMONIALS_META[2], name: t3name, position: t3pos, comment: t3text },
+    ]
     return (
         <div className="container-2200">
             <section id="sec-6-home-1" className="sec-6-home-1 mx-lg-3 mx-2 bg-black pt-100 pb-100 rounded-5 changeless overflow-hidden">
@@ -77,11 +98,9 @@ export default function Section6() {
                         <div className="col-md-8">
                             {LOGO_SVG}
                             <h2 className="alt-section-title lh-1 mb-10 reveal-text text-white">
-                                <RevealText>Lo que dicen nuestros clientes</RevealText>
+                                <RevealText>{title}</RevealText>
                             </h2>
-                            <p className="mg-portfolio-dec mb-50 text-white mb-0">
-                                Experiencias reales de clientes que hablan por sí solas.
-                            </p>
+                            <p className="mg-portfolio-dec mb-50 text-white mb-0">{subtitle}</p>
                         </div>
                         <div className="col-lg-2 ms-auto">
                             <div className="swiper-button-wrapper justify-content-end">

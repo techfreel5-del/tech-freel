@@ -1,6 +1,8 @@
 import { Link } from "react-router-dom";
 import RevealText from "@/shared/effects/RevealText";
 import TeamCard1 from "@/shared/cards/TeamCard1";
+import { useContentField } from "@/hooks/useContentField";
+const C = 'home1.s9'
 
 const ARROW_SVG = (
     <svg width="11" height="11" viewBox="0 0 11 11" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -29,6 +31,16 @@ const TEAM_MEMBERS = [
 ];
 
 export default function Section9() {
+    const badge    = useContentField(`${C}.badge`,    'Por qué elegirnos')
+    const title    = useContentField(`${C}.title`,    'Conoce a los profesionales detrás de Tech Freel. Confía en nuestro equipo experto para encontrar soluciones diseñadas especialmente para ti.')
+    const cta      = useContentField(`${C}.cta`,      'Únete al equipo')
+    const locTitle = useContentField(`${C}.locTitle`, 'Estamos aquí')
+    const addr1    = useContentField(`${C}.addr1`,    'Av. Insurgentes Sur 1602, Col. Crédito Constructor\nCiudad de México, CDMX 03940')
+    const tel1     = useContentField(`${C}.tel1`,     '+52 55 1234 5678')
+    const email1   = useContentField(`${C}.email1`,   'contacto@techfreel.com')
+    const addr2    = useContentField(`${C}.addr2`,    'Av. Vallarta 1525, Col. Americana\nGuadalajara, Jalisco 44100')
+    const tel2     = useContentField(`${C}.tel2`,     '+52 33 1234 5678')
+    const email2   = useContentField(`${C}.email2`,   'gdl@techfreel.com')
     return (
         <div className="container-2200">
             <section className="at-sec9-area pt-130 pb-130 rounded-5 mx-lg-3 mx-2 border-100 mt-10">
@@ -38,8 +50,8 @@ export default function Section9() {
                             <div className="at-about-title-wrap mb-30">
                                 <span className="at-btn common-black bg-transparent mb-10 rounded-0 p-0">
                                     <span className="text-uppercase">
-                                        <span className="text-1">Por qué elegirnos</span>
-                                        <span className="text-2">Por qué elegirnos</span>
+                                        <span className="text-1">{badge}</span>
+                                        <span className="text-2">{badge}</span>
                                     </span>
                                     <i>
                                         {ARROW_SVG}
@@ -47,10 +59,7 @@ export default function Section9() {
                                     </i>
                                 </span>
                                 <h3 className="at-section-title reveal-text mb-lg-0 mb-4">
-                                    <RevealText>
-                                        Conoce a los profesionales detrás de Tech Freel. Confía en nuestro equipo experto para encontrar
-                                        soluciones diseñadas especialmente para ti.
-                                    </RevealText>
+                                    <RevealText>{title}</RevealText>
                                 </h3>
                                 <div
                                     className="at-btn-group at_fade_anim pt-30"
@@ -61,9 +70,7 @@ export default function Section9() {
                                     <Link className="at-btn-circle" to="/team">
                                         {BTN_CIRCLE_ARROW_SVG}
                                     </Link>
-                                    <Link className="at-btn z-index-1" to="/team">
-                                        Únete al equipo
-                                    </Link>
+                                    <Link className="at-btn z-index-1" to="/team">{cta}</Link>
                                     <Link className="at-btn-circle" to="/team">
                                         {BTN_CIRCLE_ARROW_SVG}
                                     </Link>
@@ -72,37 +79,25 @@ export default function Section9() {
                                     <div className="d-flex gap-4 justify-content-center">
                                         {LOCATION_SVG}
                                         <div>
-                                            <h6 className="fw-600">Estamos aquí</h6>
+                                            <h6 className="fw-600">{locTitle}</h6>
                                             <div className="d-flex flex-md-row flex-column gap-md-5 gap-4">
                                                 <span className="fz-font-md neutral-500">
-                                                    Av. Insurgentes Sur 1602, Col. Crédito Constructor
-                                                    <br className="d-block" />
-                                                    Ciudad de México, CDMX 03940
+                                                    {addr1}
                                                     <br className="d-block" />
                                                     Teléfono:{" "}
-                                                    <span className="neutral-900">
-                                                        <a href="tel:+525512345678">+52 55 1234 5678</a>
-                                                    </span>
+                                                    <span className="neutral-900"><a href={`tel:${tel1.replace(/\s/g,'')}`}>{tel1}</a></span>
                                                     <br className="d-block" />
                                                     Email:{" "}
-                                                    <span className="neutral-900">
-                                                        <a href="mailto:contacto@techfreel.com">contacto@techfreel.com</a>
-                                                    </span>
+                                                    <span className="neutral-900"><a href={`mailto:${email1}`}>{email1}</a></span>
                                                 </span>
                                                 <span className="fz-font-md neutral-500 ps-md-5">
-                                                    Av. Vallarta 1525, Col. Americana
-                                                    <br className="d-block" />
-                                                    Guadalajara, Jalisco 44100
+                                                    {addr2}
                                                     <br className="d-block" />
                                                     Teléfono:{" "}
-                                                    <span className="neutral-900">
-                                                        <a href="tel:+523312345678">+52 33 1234 5678</a>
-                                                    </span>
+                                                    <span className="neutral-900"><a href={`tel:${tel2.replace(/\s/g,'')}`}>{tel2}</a></span>
                                                     <br className="d-block" />
                                                     Email:{" "}
-                                                    <span className="neutral-900">
-                                                        <a href="mailto:gdl@techfreel.com">gdl@techfreel.com</a>
-                                                    </span>
+                                                    <span className="neutral-900"><a href={`mailto:${email2}`}>{email2}</a></span>
                                                 </span>
                                             </div>
                                         </div>

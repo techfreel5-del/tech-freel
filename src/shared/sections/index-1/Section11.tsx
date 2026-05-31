@@ -1,5 +1,7 @@
 import { Link } from "react-router-dom";
 import RevealText from "@/shared/effects/RevealText";
+import { useContentField } from "@/hooks/useContentField";
+const C = 'home1.s11'
 
 const ARROW_SVG = (
     <svg width="11" height="11" viewBox="0 0 11 11" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -13,38 +15,27 @@ const BTN_CIRCLE_ARROW_SVG = (
     </svg>
 );
 
-const FAQ_ITEMS = [
-    {
-        id: "collapseOne",
-        num: "1",
-        question: "¿Cómo funciona su proceso de diseño?",
-        answer: "Nuestro proceso incluye descubrimiento, estrategia, diseño, retroalimentación y entrega — asegurando claridad, colaboración y resultados en cada etapa.",
-        open: true,
-    },
-    {
-        id: "collapseTwo",
-        num: "2",
-        question: "¿Cuánto tiempo tarda un proyecto típico?",
-        answer: "Los plazos varían según el alcance, pero la mayoría de los proyectos toman entre 2 y 6 semanas — con hitos claros para mantener todo en orden.",
-        open: false,
-    },
-    {
-        id: "collapseThree",
-        num: "3",
-        question: "¿Trabajan con startups o solo con marcas establecidas?",
-        answer: "Trabajamos tanto con startups como con marcas establecidas — adaptando nuestro enfoque a cada etapa de crecimiento.",
-        open: false,
-    },
-    {
-        id: "collapseFour",
-        num: "4",
-        question: "¿Pueden manejar solicitudes personalizadas o complejas?",
-        answer: "Sí — nos especializamos en proyectos personalizados y complejos, creando soluciones flexibles para necesidades únicas.",
-        open: false,
-    },
-];
+const FAQ_IDS = ["collapseOne", "collapseTwo", "collapseThree", "collapseFour"];
 
 export default function Section11({ classList = "" }: { classList?: string }) {
+    const sideTitle = useContentField(`${C}.sideTitle`, '¿Aún tienes dudas? ¡Te ayudamos!')
+    const sideDesc  = useContentField(`${C}.sideDesc`,  'Cuéntanos cómo podemos ayudarte')
+    const sideCta   = useContentField(`${C}.sideCta`,   'Centro de ayuda')
+    const title     = useContentField(`${C}.title`,     'Preguntas respondidas. Todo lo que necesitas saber, de frente.')
+    const q1 = useContentField(`${C}.q1`, '¿Cómo funciona su proceso de diseño?')
+    const a1 = useContentField(`${C}.a1`, 'Nuestro proceso incluye descubrimiento, estrategia, diseño, retroalimentación y entrega — asegurando claridad, colaboración y resultados en cada etapa.')
+    const q2 = useContentField(`${C}.q2`, '¿Cuánto tiempo tarda un proyecto típico?')
+    const a2 = useContentField(`${C}.a2`, 'Los plazos varían según el alcance, pero la mayoría de los proyectos toman entre 2 y 6 semanas — con hitos claros para mantener todo en orden.')
+    const q3 = useContentField(`${C}.q3`, '¿Trabajan con startups o solo con marcas establecidas?')
+    const a3 = useContentField(`${C}.a3`, 'Trabajamos tanto con startups como con marcas establecidas — adaptando nuestro enfoque a cada etapa de crecimiento.')
+    const q4 = useContentField(`${C}.q4`, '¿Pueden manejar solicitudes personalizadas o complejas?')
+    const a4 = useContentField(`${C}.a4`, 'Sí — nos especializamos en proyectos personalizados y complejos, creando soluciones flexibles para necesidades únicas.')
+    const FAQ_ITEMS = [
+        { id: FAQ_IDS[0], num: "1", question: q1, answer: a1, open: true },
+        { id: FAQ_IDS[1], num: "2", question: q2, answer: a2, open: false },
+        { id: FAQ_IDS[2], num: "3", question: q3, answer: a3, open: false },
+        { id: FAQ_IDS[3], num: "4", question: q4, answer: a4, open: false },
+    ]
     return (
         <div className={`alt-faq-area pt-145 pb-80 ${classList || ""}`}>
             <div className="container">
@@ -59,8 +50,8 @@ export default function Section11({ classList = "" }: { classList?: string }) {
                                     className="w-100"
                                     alt="orisa" loading="lazy" />
                             </div>
-                            <h6 className="mb-15 pt-50">¿Aún tienes dudas? ¡Te ayudamos!</h6>
-                            <p className="at-faq-dec mb-35">Cuéntanos cómo podemos ayudarte</p>
+                            <h6 className="mb-15 pt-50">{sideTitle}</h6>
+                            <p className="at-faq-dec mb-35">{sideDesc}</p>
                             <div
                                 className="at-btn-group at_fade_anim"
                                 data-delay=".4"
@@ -71,7 +62,7 @@ export default function Section11({ classList = "" }: { classList?: string }) {
                                     {BTN_CIRCLE_ARROW_SVG}
                                 </Link>
                                 <Link className="at-btn z-index-1" to="/faqs">
-                                    Centro de ayuda
+                                    {sideCta}
                                 </Link>
                                 <Link className="at-btn-circle" to="/faqs">
                                     {BTN_CIRCLE_ARROW_SVG}
@@ -93,7 +84,7 @@ export default function Section11({ classList = "" }: { classList?: string }) {
                             </span>
                             <h3 className="at-section-title reveal-text">
                                 <RevealText>
-                                    Preguntas respondidas. Todo lo que necesitas saber, de frente.
+                                    {title}
                                 </RevealText>
                             </h3>
                             <div className="accordion pt-80" id="accordionExample">

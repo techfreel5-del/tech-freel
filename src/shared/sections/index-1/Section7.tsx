@@ -1,5 +1,7 @@
 import { Link } from "react-router-dom";
 import RevealText from "@/shared/effects/RevealText";
+import { useContentField } from "@/hooks/useContentField";
+const C = 'home1.s7'
 
 const ARROW_SVG = (
     <svg width="11" height="11" viewBox="0 0 11 11" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -42,6 +44,16 @@ const STAT_SVG_2 = (
 );
 
 export default function Section7() {
+    const badge     = useContentField(`${C}.badge`,     'Por qué elegirnos')
+    const title     = useContentField(`${C}.title`,     'Entregamos resultados medibles a través de un sólido equilibrio entre excelencia en diseño y rendimiento funcional.')
+    const bodyText  = useContentField(`${C}.bodyText`,  'Tech Freel™ va más allá de la estética — aporta claridad a través del movimiento, estructura flexible y herramientas prácticas que te ayudan a avanzar más rápido sin perder tu identidad.')
+    const img1cap   = useContentField(`${C}.img1cap`,   'Las grandes experiencias digitales comienzan con una conversación. Hablemos.')
+    const stat1     = useContentField(`${C}.stat1`,     '1.8M')
+    const stat1sub  = useContentField(`${C}.stat1sub`,  'Casos activos')
+    const stat1desc = useContentField(`${C}.stat1desc`, 'Siempre brindamos soluciones completas enfocadas en el crecimiento de tu negocio.')
+    const stat2     = useContentField(`${C}.stat2`,     '16K')
+    const stat2sub  = useContentField(`${C}.stat2sub`,  'Socios de confianza')
+    const stat2desc = useContentField(`${C}.stat2desc`, 'Porque a veces el mejor diseño es el que no tienes que pensar.')
     return (
         <div className="container-2200">
             {/* at-sec7-area-start */}
@@ -52,8 +64,8 @@ export default function Section7() {
                             <div className="at-about-title-wrap mb-30">
                                 <span className="at-btn common-black bg-transparent mb-10 rounded-0 p-0">
                                     <span className="text-uppercase">
-                                        <span className="text-1">Por qué elegirnos</span>
-                                        <span className="text-2">Por qué elegirnos</span>
+                                        <span className="text-1">{badge}</span>
+                                        <span className="text-2">{badge}</span>
                                     </span>
                                     <i>
                                         {ARROW_SVG}
@@ -61,10 +73,7 @@ export default function Section7() {
                                     </i>
                                 </span>
                                 <h3 className="at-section-title reveal-text mb-80">
-                                    <RevealText>
-                                        Entregamos resultados medibles a través de un sólido equilibrio entre excelencia en diseño
-                                        y rendimiento funcional.
-                                    </RevealText>
+                                    <RevealText>{title}</RevealText>
                                 </h3>
                             </div>
                         </div>
@@ -114,9 +123,7 @@ export default function Section7() {
                                             height={450} loading="lazy" />
                                     </div>
                                     <div className="content">
-                                        <h6 className="common-white position-absolute bottom-0 start-0 m-4">
-                                            Las grandes experiencias digitales comienzan con una conversación. Hablemos.
-                                        </h6>
+                                        <h6 className="common-white position-absolute bottom-0 start-0 m-4">{img1cap}</h6>
                                     </div>
                                 </div>
                             </div>
@@ -125,31 +132,24 @@ export default function Section7() {
                             <div className="row g-2">
                                 <div className="col-lg-7 col-md-8 col-12">
                                     <h6 className="reveal-text neutral-800 mb-60">
-                                        <RevealText>
-                                            Tech Freel™ va más allá de la estética — aporta claridad a través del movimiento,
-                                            estructura flexible y herramientas prácticas que te ayudan a avanzar más rápido
-                                            sin perder tu identidad.
-                                        </RevealText>
+                                        <RevealText>{bodyText}</RevealText>
                                     </h6>
                                 </div>
                                 <div className="col-md-6 col-12">
                                     <div className="hover-unborder">
                                         <div className="bg-neutral-0 rounded-4 px-5 py-3">
                                             <h4 className="d-flex justify-content-between align-items-center mb-0">
-                                                <span>1.8M</span>
+                                                <span>{stat1}</span>
                                                 <span>+</span>
                                             </h4>
                                         </div>
                                         <div className="bg-neutral-0 rounded-4 p-5 mt-2">
                                             <h6 className="text-end mb-0">
-                                                Casos <br />
-                                                activos
+                                                {stat1sub}
                                             </h6>
                                             <div className="pt-150">
                                                 {STAT_SVG_1}
-                                                <p className="fz-font-lg mt-3 mb-0">
-                                                    Siempre brindamos soluciones completas enfocadas en el crecimiento de tu negocio.
-                                                </p>
+                                                <p className="fz-font-lg mt-3 mb-0">{stat1desc}</p>
                                             </div>
                                         </div>
                                     </div>
@@ -158,20 +158,16 @@ export default function Section7() {
                                     <div className="hover-unborder">
                                         <div className="bg-neutral-0 rounded-4 p-5 mb-2">
                                             <h6 className="text-end mb-0">
-                                                Socios
-                                                <br />
-                                                de confianza
+                                                {stat2sub}
                                             </h6>
                                             <div className="pt-150">
                                                 {STAT_SVG_2}
-                                                <p className="fz-font-lg mt-3 mb-0">
-                                                    Porque a veces el mejor diseño es el que no tienes que pensar.
-                                                </p>
+                                                <p className="fz-font-lg mt-3 mb-0">{stat2desc}</p>
                                             </div>
                                         </div>
                                         <div className="bg-neutral-0 rounded-4 px-5 py-3">
                                             <h4 className="d-flex justify-content-between align-items-center mb-0">
-                                                <span>16K</span>
+                                                <span>{stat2}</span>
                                                 <span>+</span>
                                             </h4>
                                         </div>
