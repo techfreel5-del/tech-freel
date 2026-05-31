@@ -26,7 +26,7 @@ export default function Section2() {
     const card2Title = useContentField(`${C}.card2Title`, 'Experiencia e Innovación')
     const card2Desc  = useContentField(`${C}.card2Desc`,  'Respaldados por una década de experiencia creativa, construimos experiencias visuales que unen estrategia, diseño y tecnología para hacer crecer marcas, inspirar audiencias y crear impacto real.')
     const img1       = useContentField(`${C}.img1`,       '/assets/imgs/pages/img-3.webp')
-    const img2       = useContentField(`${C}.img2`,       '/assets/imgs/pages/img-4.webp')
+    const img2       = useContentField(`${C}.img2`,       'https://i.postimg.cc/vmGwFZ3d/freepik-rellenar-y-ajustar-a-fondo-de-la-imagen-12804.jpg')
     return (
         <section className="at-about-area pt-100">
             <div className="container">
